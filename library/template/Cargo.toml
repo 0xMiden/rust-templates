@@ -4,7 +4,23 @@ version = "0.1.0"
 edition = "2021"
 
 [lib]
+# Build this crate as a self-contained, C-style dynamic library
+# This is required to emit the proper Wasm module type
 crate-type = ["cdylib"]
 
+[dependencies]
+# Miden SDK consists of a Prelude (intrinsic functions for VM opr, stdlib) and transaction kernel API for the Miden rollup
+miden-sdk = { git = "https://github.com/0xPolygonMiden/compiler", rev = "581f639c6bf0bc8f6f508d970ee799f135b5798f" }
+# Use a tiny allocator in place of the default one, if we want
+# to make use of types in the `alloc` crate, e.g. String. We
+# don't need that now, but its good information to have in hand.
+wee_alloc = { version = "0.4.5", default-features = false}
+
 [profile.release]
+# optimize the output for size
 opt-level = "z"
+# Explicitly disable panic infrastructure on Wasm, as
+# there is no proper support for them anyway, and it
+# ensures that panics do not pull in a bunch of standard
+# library code unintentionally
+panic = "abort"
