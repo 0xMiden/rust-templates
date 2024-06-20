@@ -10,7 +10,7 @@ crate-type = ["cdylib"]
 
 [dependencies]
 # Miden SDK consists of a Prelude (intrinsic functions for VM opr, stdlib) and transaction kernel API for the Miden rollup
-miden-sdk = { git = "https://github.com/0xPolygonMiden/compiler", rev = "581f639c6bf0bc8f6f508d970ee799f135b5798f" }
+miden-sdk = { git = "https://github.com/0xPolygonMiden/compiler", rev = "10a05d8fa76106325e2497c2d1b10f1042c77340" }
 # Use a tiny allocator in place of the default one, if we want
 # to make use of types in the `alloc` crate, e.g. String. We
 # don't need that now, but its good information to have in hand.
