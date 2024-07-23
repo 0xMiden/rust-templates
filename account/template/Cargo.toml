@@ -9,7 +9,8 @@ edition = "2021"
 crate-type = ["cdylib"]
 
 [dependencies]
-# Miden SDK consists of a Prelude (intrinsic functions for VM opr, stdlib) and transaction kernel API for the Miden rollup
+# Miden SDK consists of a stdlib (intrinsic functions for VM ops, stdlib functions and types)
+# and transaction kernel API for the Miden rollup
 {% if compiler_path %}
 miden-sdk = { path = "{{ compiler_path }}/sdk/sdk" }
 {% elsif compiler_branch %}
