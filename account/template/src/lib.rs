@@ -19,22 +19,25 @@ fn my_panic(_info: &core::panic::PanicInfo) -> ! {
 
 use miden_sdk::*;
 
-// Marking the function no_mangle ensures that it is exported
-// from the compiled binary as `fib`, otherwise it would have
-// a mangled name that has no stable form.
-//
-// You can specify a different name from the library than the
-// name in the source code using the `#[export_name = "foo"]`
-// attribute, which will make the function callable as `foo`
-// externally (in this example)
-#[no_mangle]
-pub fn fib(n: u32) -> Felt {
-    let mut a = felt!(0);
-    let mut b = felt!(1);
-    for _ in 0..n {
-        let c = a + b;
-        a = b;
-        b = c;
+struct Account;
+
+impl Account {
+    // Marking the function no_mangle ensures that it is exported
+    // from the compiled binary as `receive_asset`, otherwise it would have
+    // a mangled name that has no stable form.
+    //
+    // You can specify a different name from the library than the
+    // name in the source code using the `#[export_name = "foo"]`
+    // attribute, which will make the function callable as `foo`
+    // externally (in this example)
+    #[no_mangle]
+    fn receive_asset(asset: CoreAsset) {
+        add_asset(asset);
     }
-    a
+
+    #[no_mangle]
+    fn send_asset(asset: CoreAsset, tag: Tag, note_type: NoteType, recipient: Recipient) {
+        let asset = remove_asset(asset);
+        create_note(asset, tag, note_type, recipient);
+    }
 }

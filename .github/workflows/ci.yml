@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches:
+    - main
+    paths-ignore:
+    - '*.md'
+  pull_request:
+    paths-ignore:
+    - '*.md'
+
+jobs:
+  test_new_project_build:
+    # Create a new project from the template and build it
+    name: Test new project build
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install Rust
+      uses: actions-rs/toolchain@v1
+    - name: Install Miden cargo extension
+      uses: actions-rs/cargo@v1
+      with:
+        command: install
+        args: --git https://github.com/0xPolygonMiden/compiler --branch main cargo-miden
+    - name: Run `cargo miden new` command
+      run: cargo miden new my-account-proj --template-path .
+    - name: Run `cargo miden build` command
+      run: cargo miden build --release
+      working-directory: my-account-proj
