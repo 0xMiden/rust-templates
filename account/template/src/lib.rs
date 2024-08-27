@@ -9,7 +9,7 @@
 
 // Global allocator to use heap memory in no-std environment
 #[global_allocator]
-static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
+static ALLOC: BumpAlloc = miden_sdk::BumpAlloc::new();
 
 // Required for no-std crates
 #[panic_handler]
