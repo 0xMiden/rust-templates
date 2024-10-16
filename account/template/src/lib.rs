@@ -9,7 +9,7 @@
 
 // Global allocator to use heap memory in no-std environment
 #[global_allocator]
-static ALLOC: BumpAlloc = miden_sdk::BumpAlloc::new();
+static ALLOC: BumpAlloc = miden::BumpAlloc::new();
 
 // Required for no-std crates
 #[panic_handler]
@@ -17,7 +17,7 @@ fn my_panic(_info: &core::panic::PanicInfo) -> ! {
     loop {}
 }
 
-use miden_sdk::*;
+use miden::*;
 
 struct Account;
 
