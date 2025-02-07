@@ -4,16 +4,7 @@
 
 `{{crate_name}}` is built using the [Miden compiler](https://github.com/0xPolygonMiden/compiler).  
 
-`cargo miden` is a `cargo` cargo extension. Check out its [documentation](https://github.com/0xPolygonMiden/compiler/tree/main/tools/cargo-miden)
-for more details.
+`cargo miden` is a `cargo` cargo extension. Check out its [documentation](https://0xpolygonmiden.github.io/compiler/usage/cargo-miden/#compiling-to-miden-assembly)
+for more details on how to build and run the compiled programs.
 
 
-### Build
-
-To build this project, run:
-
-```bash
-cargo miden build --release
-```
-
-The compiled Miden artifact will be located in `target/miden/release`.
