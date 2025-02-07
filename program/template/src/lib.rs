@@ -17,8 +17,13 @@ fn my_panic(_info: &core::panic::PanicInfo) -> ! {
     loop {}
 }
 
-// Pass up to the 16 u32 inputs as entrypoint function parameters.
+// Pass up to 16 u32 inputs as entrypoint function parameters.
 // The output is temporarely limited to 1 u32 value
+//
+// NOTE:
+// The name of the entrypoint function is expected to be `entrypoint`. Do not remove the
+// `#[no_mangle]` attribute, otherwise, the rustc will mangle the name and it'll not be recognized
+// by the Miden compiler.
 #[no_mangle]
 pub fn entrypoint(a: u32, b: u32) -> u32 {
     a + b
