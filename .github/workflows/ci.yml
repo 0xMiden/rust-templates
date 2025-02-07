@@ -26,7 +26,7 @@ jobs:
         command: install
         args: --git https://github.com/0xPolygonMiden/compiler --branch next cargo-miden
     - name: Run `cargo miden new` command with program template
-      run: cargo miden new my-account-proj --template-path=./program
+      run: cargo miden new my-program-proj --template-path=./program
     - name: Run `cargo miden build` command
       run: cargo miden build --release
-      working-directory: my-account-proj
+      working-directory: my-program-proj
