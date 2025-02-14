@@ -8,8 +8,8 @@
 // use alloc::vec::Vec;
 
 // // Global allocator to use heap memory in no-std environment
-// #[global_allocator]
-// static ALLOC: BumpAlloc = miden::BumpAlloc::new();
+#[global_allocator]
+static ALLOC: BumpAlloc = miden::BumpAlloc::new();
 
 // Required for no-std crates
 #[panic_handler]
