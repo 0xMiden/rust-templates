@@ -4,41 +4,60 @@
 // However, we could still use some standard library types while
 // remaining no-std compatible, if we uncommented the following lines:
 //
-// extern crate alloc;
-// use alloc::vec::Vec;
+extern crate alloc;
 
 // Global allocator to use heap memory in no-std environment
 #[global_allocator]
-static ALLOC: BumpAlloc = miden::BumpAlloc::new();
+static ALLOC: miden::BumpAlloc = miden::BumpAlloc::new();
 
-// Required for no-std crates
+// Define a panic handler as required by the `no_std` environment
 #[cfg(not(test))]
 #[panic_handler]
-fn my_panic(_info: &core::panic::PanicInfo) -> ! {
+fn panic(_info: &core::panic::PanicInfo) -> ! {
+    // For now, just loop indefinitely
     loop {}
 }
 
-use miden::*;
+mod bindings;
 
-struct Account;
+use bindings::exports::miden::{{crate_name}}::{{crate_name}}::Guest;
+use miden::{account, component, felt, Felt, StorageMap, StorageMapAccess, Word};
 
-impl Account {
-    // Marking the function no_mangle ensures that it is exported
-    // from the compiled binary as `receive_asset`, otherwise it would have
-    // a mangled name that has no stable form.
-    //
-    // You can specify a different name from the library than the
-    // name in the source code using the `#[export_name = "foo"]`
-    // attribute, which will make the function callable as `foo`
-    // externally (in this example)
-    #[no_mangle]
-    fn receive_asset(asset: CoreAsset) {
-        miden::account::add_asset(asset);
+/// Main contract structure for the counter example.
+#[component]
+struct CounterContract {
+    /// Storage map holding the counter value.
+    #[storage(slot(0), description = "counter contract storage map")]
+    count_map: StorageMap,
+}
+
+bindings::export!(CounterContract with_types_in bindings);
+
+impl Guest for CounterContract {
+    /// Returns the current counter value stored in the contract's storage map.
+    fn get_count() -> Felt {
+        // Get the instance of the contract
+        let contract = CounterContract::default();
+        // Define a fixed key for the counter value within the map
+        let key = Word::from([felt!(0); 4]);
+        // Read the value associated with the key from the storage map
+        contract.count_map.get(&key)
     }
 
-    #[no_mangle]
-    fn send_asset(asset: CoreAsset, tag: Tag, note_type: NoteType, recipient: Recipient) {
-        let asset = miden::account::remove_asset(asset);
-        miden::tx::create_note(asset, tag, note_type, recipient);
+    /// Increments the counter value stored in the contract's storage map by one.
+    fn increment_count() -> Felt {
+        // Get the instance of the contract
+        let contract = CounterContract::default();
+        // Define the same fixed key
+        let key = Word::from([felt!(0); 4]);
+        // Read the current value
+        let current_value: Felt = contract.count_map.get(&key);
+        // Increment the value by one
+        let new_value = current_value + felt!(1);
+        // Write the new value back to the storage map
+        contract.count_map.set(key, new_value);
+        // Increment the nonce of this Miden account
+        account::incr_nonce(1);
+        new_value
     }
 }

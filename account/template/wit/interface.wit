@@ -1,0 +1,21 @@
+package miden:{{crate_name | replace: "_", "-"}}@0.1.0;
+
+use miden:base/core-types@1.0.0;
+
+interface {{crate_name | replace: "_", "-"}} {
+    use core-types.{felt};
+
+    /// Returns the current counter value stored in the contract's storage.
+    get-count: func() -> felt;
+    /// Increments the counter value stored in the contract's storage by one
+    //and return the new counter value
+    increment-count: func() -> felt;
+}
+
+world {{crate_name | replace: "_", "-"}}-world {
+    include miden:core-intrinsics/intrinsics@1.0.0;
+    include miden:core-stdlib/stdlib@1.0.0;
+    include miden:core-base/base@1.0.0;
+
+    export {{crate_name | replace: "_", "-"}};
+}
