@@ -14,11 +14,11 @@ crate-type = ["cdylib"]
 {% if compiler_path %}
 miden = { path = "{{ compiler_path }}/sdk/sdk" }
 {% elsif compiler_branch %}
-miden = { git = "https://github.com/0xPolygonMiden/compiler", branch = "{{ compiler_branch }}" }
+miden = { git = "https://github.com/0xMiden/compiler", branch = "{{ compiler_branch }}" }
 {% elsif compiler_rev %}
-miden = { git = "https://github.com/0xPolygonMiden/compiler", rev = "{{ compiler_rev }}" }
+miden = { git = "https://github.com/0xMiden/compiler", rev = "{{ compiler_rev }}" }
 {% else %}
-miden = { git = "https://github.com/0xPolygonMiden/compiler" }
+miden = { git = "https://github.com/0xMiden/compiler" }
 {% endif %}
 wit-bindgen-rt = "0.28"
 
