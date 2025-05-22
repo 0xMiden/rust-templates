@@ -1,6 +1,6 @@
 # Miden project starter templates
 
-This repository contains the official starter project templates for a [Miden cargo extension](https://github.com/0xMiden/compiler/cargo-ext) `new` command.  
+This repository contains the official starter project templates for a [Miden cargo extension](https://0xmiden.github.io/compiler/usage/cargo-miden.html) `new` command.  
 
 ## Pre-requisites
 
