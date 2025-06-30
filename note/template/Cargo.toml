@@ -27,16 +27,16 @@ package = "miden:{{crate_name | replace: "_", "-"}}"
 
 # Miden dependencies for cargo-miden build/linking
 [package.metadata.miden.dependencies]
-# Path to the counter-contract cargo project. Can be created with `cargo miden new [name]`
-"miden:counter-contract" = { path = "../counter-contract" }
+# TODO: Add your account contract dependencies here
+"miden:add-contract" = { path = "../add-contract"}
 
 [package.metadata.component.target.dependencies]
 "miden:base" = { path = "wit-deps/miden.wit" }
 "miden:core-intrinsics" = { path = "wit-deps/miden-core-intrinsics.wit" }
 "miden:core-stdlib" = { path = "wit-deps/miden-core-stdlib.wit" }
 "miden:core-base" = { path = "wit-deps/miden-core-base.wit" }
-# The WIT file from the counter contract 
-"miden:counter-contract" = { path = "../counter-contract/wit/interface.wit" }
+# TODO: Add your account contract WIT dependencies here
+"miden:add-contract" = { path = "../add-contract/wit/interface.wit" }
 
 [profile.release]
 # optimize the output for size
@@ -57,4 +57,3 @@ opt-level = 1
 debug-assertions = true
 overflow-checks = false
 debug = true
-

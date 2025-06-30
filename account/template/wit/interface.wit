@@ -3,13 +3,10 @@ package miden:{{crate_name | replace: "_", "-"}}@0.1.0;
 use miden:base/core-types@1.0.0;
 
 interface {{crate_name | replace: "_", "-"}} {
-    use core-types.{felt};
+    use core-types.{felt, asset};
 
-    /// Returns the current counter value stored in the contract's storage.
-    get-count: func() -> felt;
-    /// Increments the counter value stored in the contract's storage by one
-    //and return the new counter value
-    increment-count: func() -> felt;
+    add: func(a: felt, b: felt) -> felt;
+
 }
 
 world {{crate_name | replace: "_", "-"}}-world {
