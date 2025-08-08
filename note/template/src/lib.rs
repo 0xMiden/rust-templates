@@ -15,17 +15,16 @@ mod bindings;
 
 use bindings::exports::miden::base::note_script::Guest;
 use bindings::miden::add_contract::add_contract::add;
-use miden::{felt, Felt};
+use miden::{felt, Felt, Word};
 
 struct MyNote;
 
 bindings::export!(MyNote with_types_in bindings);
 
 impl Guest for MyNote {
-    fn note_script() {
+    fn note_script(_arg: Word) {
         let a = felt!(1);
         let b = felt!(2);
         add(a, b);
     }
 }
-
