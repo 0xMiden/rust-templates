@@ -1,0 +1,6 @@
+package miden:{{crate_name | replace: "_", "-"}}@1.0.0;
+
+interface tx-script-interface {
+    // Define any additional interfaces your transaction script needs
+    // This file can be removed if not needed
+}

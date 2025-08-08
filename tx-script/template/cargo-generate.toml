@@ -1,0 +1,13 @@
+[template]
+cargo_generate_version = ">=0.18.3"
+
+[placeholders.crate_name]
+type = "string"
+prompt = "What is the name of your transaction script?"
+regex = "^[a-zA-Z][a-zA-Z0-9_-]*$"
+
+[conditional.'compiler_path'.placeholders]
+
+[conditional.'compiler_rev'.placeholders]
+
+[conditional.'compiler_branch'.placeholders]
