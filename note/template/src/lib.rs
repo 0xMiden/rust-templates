@@ -22,7 +22,7 @@ struct MyNote;
 bindings::export!(MyNote with_types_in bindings);
 
 impl Guest for MyNote {
-    fn note_script(_arg: Word) {
+    fn run(_arg: Word) {
         let a = felt!(1);
         let b = felt!(2);
         add(a, b);

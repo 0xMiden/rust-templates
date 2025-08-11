@@ -22,7 +22,7 @@ struct MyTxScript;
 bindings::export!(MyTxScript with_types_in bindings);
 
 impl Guest for MyTxScript {
-    fn tx_script(_arg: Word) {
+    fn run(_arg: Word) {
         // Transaction script logic here
         // This is just an example - replace with your actual transaction logic
 
