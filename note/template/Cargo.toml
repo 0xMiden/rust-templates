@@ -35,9 +35,6 @@ project-kind = "note-script"
 
 [package.metadata.component.target.dependencies]
 "miden:base" = { path = "wit-deps/miden.wit" }
-"miden:core-intrinsics" = { path = "wit-deps/miden-core-intrinsics.wit" }
-"miden:core-stdlib" = { path = "wit-deps/miden-core-stdlib.wit" }
-"miden:core-base" = { path = "wit-deps/miden-core-base.wit" }
 # TODO: Add your account contract WIT dependencies here
 "miden:add-contract" = { path = "../add-contract/wit/interface.wit" }
 
