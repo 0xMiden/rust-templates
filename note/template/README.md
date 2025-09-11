@@ -1,9 +1,9 @@
 # {{crate_name}}
 
-A Miden note script project.
+A Miden authentication component project.
 
 ## Build
 
 ```bash
-cargo miden build
+cargo miden build --release
 ```
