@@ -5,5 +5,5 @@ A Miden program project.
 ## Build
 
 ```bash
-cargo miden build
+cargo miden build --release
 ```

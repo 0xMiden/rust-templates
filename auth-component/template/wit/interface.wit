@@ -1,0 +1,5 @@
+package miden:{{crate_name | replace: "_", "-"}}@0.1.0;
+
+world {{crate_name | replace: "_", "-"}}-world {
+    export miden:base/authentication-component@1.0.0;
+}
