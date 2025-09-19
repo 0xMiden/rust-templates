@@ -20,6 +20,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: Install Rust
       uses: actions-rs/toolchain@v1
+      with:
+        components: llvm-tools
     - name: Install Miden cargo extension
       uses: actions-rs/cargo@v1
       with:

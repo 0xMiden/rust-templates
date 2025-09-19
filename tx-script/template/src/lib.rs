@@ -26,7 +26,6 @@ impl Guest for MyTxScript {
         // Transaction script logic here
         // This is just an example - replace with your actual transaction logic
 
-        // Example: Call an account contract function
         let a = felt!(1);
         let b = felt!(2);
         let _result = add(a, b);
