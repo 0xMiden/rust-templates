@@ -30,3 +30,8 @@ jobs:
     - name: Run `cargo miden build` command
       run: cargo miden build --release
       working-directory: my-program-proj
+    - name: Run `cargo miden new` command with account template
+      run: cargo miden new my-account-proj --template-path=./account
+    - name: Run `cargo miden build` command
+      run: cargo miden build --release
+      working-directory: my-account-proj
