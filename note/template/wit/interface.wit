@@ -2,10 +2,6 @@ package miden:{{crate_name | replace: "_", "-"}}@0.1.0;
 
 
 world {{crate_name | replace: "_", "-"}}-world {
-    include miden:core-intrinsics/intrinsics@1.0.0;
-    include miden:core-stdlib/stdlib@1.0.0;
-    include miden:core-base/base@1.0.0;
-
     // TODO: import your account interface here
     import miden:add-contract/add-contract@0.1.0;
 
