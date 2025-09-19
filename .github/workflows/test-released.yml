@@ -1,0 +1,26 @@
+name: Test released cargo-miden
+
+on:
+  push:
+    tags:
+      - '**'
+  delete:
+  schedule:
+    # 06::00 UTC
+    - cron: '0 6 * * *'
+
+jobs:
+  test_released:
+    name: Test released cargo-miden
+    runs-on: ubuntu-latest
+    if: github.event_name != 'delete' || github.event.ref_type == 'tag'
+    steps:
+      - name: Checkout templates
+        uses: actions/checkout@v2
+
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+
+      - name: Run released-tooling template build
+        run: bash scripts/test_released.sh
+
