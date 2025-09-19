@@ -1,4 +1,4 @@
-name: Test released cargo-miden
+name: CI
 
 on:
   push:
@@ -22,6 +22,6 @@ jobs:
       - name: Install Rust
         uses: actions-rs/toolchain@v1
 
-      - name: Run released-tooling template build
+      - name: Build all templates with released cargo-miden
         run: bash scripts/test_released.sh
 
