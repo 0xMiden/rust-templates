@@ -9,13 +9,10 @@ fn my_panic(_info: &core::panic::PanicInfo) -> ! {
     loop {}
 }
 
-bindings::export!(AuthComponent with_types_in bindings);
-
-mod bindings;
-
 use bindings::exports::miden::base::authentication_component::Guest;
-use miden::*;
+use miden::{component, Word};
 
+#[component]
 struct AuthComponent;
 
 impl Guest for AuthComponent {

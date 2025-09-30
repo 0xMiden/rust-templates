@@ -20,7 +20,6 @@ miden = { git = "https://github.com/0xMiden/compiler", rev = "{{ compiler_rev }}
 {% else %}
 miden = { version = "0.5" }
 {% endif %}
-wit-bindgen-rt = "0.28"
 
 [package.metadata.component]
 package = "miden:{{project-name | replace: "_", "-"}}"

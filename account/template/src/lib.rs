@@ -11,15 +11,11 @@ fn panic(_info: &core::panic::PanicInfo) -> ! {
     loop {}
 }
 
-mod bindings;
-
 use bindings::exports::miden::{{crate_name}}::{{crate_name}}::Guest;
 use miden::{component, Felt};
 
 #[component]
 struct MyAccountComponent;
-
-bindings::export!(MyAccountComponent with_types_in bindings);
 
 impl Guest for MyAccountComponent {
     fn add(a: Felt, b: Felt) -> Felt {

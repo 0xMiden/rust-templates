@@ -11,20 +11,12 @@ fn panic(_info: &core::panic::PanicInfo) -> ! {
     loop {}
 }
 
-mod bindings;
-
-use bindings::exports::miden::base::note_script::Guest;
 use bindings::miden::add_contract::add_contract::add;
-use miden::{felt, Felt, Word};
+use miden::{felt, note_script, Felt, Word};
 
-struct MyNote;
-
-bindings::export!(MyNote with_types_in bindings);
-
-impl Guest for MyNote {
-    fn run(_arg: Word) {
-        let a = felt!(1);
-        let b = felt!(2);
-        add(a, b);
-    }
+#[note_script]
+fn run(_arg: Word) {
+    let a = felt!(1);
+    let b = felt!(2);
+    add(a, b);
 }
