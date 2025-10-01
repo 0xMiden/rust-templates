@@ -1,9 +1,0 @@
-package miden:{{crate_name | replace: "_", "-"}}@0.1.0;
-
-
-world {{crate_name | replace: "_", "-"}}-world {
-    // TODO: import your account interface here
-    import miden:add-contract/add-contract@0.1.0;
-
-    export miden:base/transaction-script@1.0.0;
-}

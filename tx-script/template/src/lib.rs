@@ -11,26 +11,18 @@ fn panic(_info: &core::panic::PanicInfo) -> ! {
     loop {}
 }
 
-mod bindings;
-
-use bindings::exports::miden::base::transaction_script::Guest;
 use bindings::miden::add_contract::add_contract::add;
-use miden::{felt, Felt, Word};
+use miden::{felt, tx_script, Felt, Word};
 
-struct MyTxScript;
+#[tx_script]
+fn run(_arg: Word) {
+    // Transaction script logic here
+    // This is just an example - replace with your actual transaction logic
 
-bindings::export!(MyTxScript with_types_in bindings);
+    let a = felt!(1);
+    let b = felt!(2);
+    let _result = add(a, b);
 
-impl Guest for MyTxScript {
-    fn run(_arg: Word) {
-        // Transaction script logic here
-        // This is just an example - replace with your actual transaction logic
-
-        let a = felt!(1);
-        let b = felt!(2);
-        let _result = add(a, b);
-
-        // You can also create notes, move assets, etc.
-        // See the Miden SDK documentation for available transaction operations
-    }
+    // You can also create notes, move assets, etc.
+    // See the Miden SDK documentation for available transaction operations
 }
