@@ -28,6 +28,3 @@ package = "miden:{{crate_name | replace: "_", "-"}}"
 project-kind = "account"
 supported-types = ["RegularAccountUpdatableCode"]
 
-[package.metadata.component.target.dependencies]
-"miden:base" = { path = "wit-deps/miden.wit" }
-

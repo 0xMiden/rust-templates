@@ -27,6 +27,3 @@ package = "miden:{{crate_name | replace: "_", "-"}}"
 [package.metadata.miden]
 project-kind = "authentication-component"
 
-[package.metadata.component.target.dependencies]
-"miden:base" = { path = "wit-deps/miden.wit" }
-
