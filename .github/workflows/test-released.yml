@@ -7,7 +7,7 @@ on:
   delete:
   schedule:
     # 06::00 UTC
-    - cron: '0 6 * * *'
+    - cron: "0 6 * * *"
   pull_request:
 
 jobs:
