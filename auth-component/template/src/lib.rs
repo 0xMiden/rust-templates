@@ -9,14 +9,14 @@ fn my_panic(_info: &core::panic::PanicInfo) -> ! {
     loop {}
 }
 
-use bindings::exports::miden::base::authentication_component::Guest;
 use miden::{component, Word};
 
 #[component]
 struct AuthComponent;
 
-impl Guest for AuthComponent {
-    fn auth_procedure(_arg: Word) {
+#[component]
+impl AuthComponent {
+    pub fn auth_procedure(&self, _arg: Word) {
         // If this procedure returns control the transcation authentication is considered succesfull.
         // In case of panic the transaction authentication considered as failed by the transaction kernel.
         todo!()
