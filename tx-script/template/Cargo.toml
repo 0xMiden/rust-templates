@@ -34,5 +34,4 @@ project-kind = "transaction-script"
 
 [package.metadata.component.target.dependencies]
 # TODO: Add your account contract WIT dependencies here
-"miden:add-contract" = { path = "../add-contract/wit/interface.wit" }
-
+"miden:add-contract" = { path = "../add-contract/target/generated-wit/" }
