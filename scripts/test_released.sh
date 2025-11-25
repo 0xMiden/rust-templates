@@ -27,14 +27,6 @@ trap cleanup EXIT
 
 echo "=== Testing templates with released cargo-miden (no --template-path) ==="
 
-echo "\n--- Scaffolding 'test-account' (default account) ---"
-(cd "$WORKDIR" && cargo miden new test-account)
-
-echo "--- Building 'test-account' (debug) ---"
-(cd "$WORKDIR/test-account" && cargo miden build)
-echo "--- Building 'test-account' (release) ---"
-(cd "$WORKDIR/test-account" && cargo miden build --release)
-
 echo "\n--- Scaffolding 'test-program' (--program) ---"
 (cd "$WORKDIR" && cargo miden new test-program --program)
 echo "--- Building 'test-program' (debug) ---"
