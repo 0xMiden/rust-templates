@@ -20,19 +20,3 @@ miden = { git = "https://github.com/0xMiden/compiler", rev = "{{ compiler_rev }}
 {% else %}
 miden = { version = "0.12" }
 {% endif %}
-
-[package.metadata.component]
-package = "miden:{{crate_name | replace: "_", "-"}}"
-
-[package.metadata.miden]
-project-kind = "note-script"
-
-# Miden dependencies for cargo-miden build/linking
-[package.metadata.miden.dependencies]
-# TODO: Add your account contract dependencies here
-"miden:add-contract" = { path = "../add-contract"}
-
-[package.metadata.component.target.dependencies]
-# TODO: Add your account contract WIT dependencies here
-"miden:add-contract" = { path = "../add-contract/target/generated-wit/" }
-
