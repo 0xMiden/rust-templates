@@ -26,7 +26,7 @@ jobs:
       uses: actions-rs/cargo@v1
       with:
         command: install
-        args: --git https://github.com/0xMiden/compiler --branch next cargo-miden
+        args: --locked --git https://github.com/0xMiden/compiler --branch next cargo-miden
     - name: Run `cargo miden new` command with program template
       run: cargo miden new my-program-proj --template-path=./program
     - name: Run `cargo miden build` command
