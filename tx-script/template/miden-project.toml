@@ -10,5 +10,5 @@ namespace = "miden:base/transaction-script@1.0.0"
 # TODO: Add your account contract dependencies here
 add-contract = { path = "../add-contract"}
 
-[package.metadata.dependencies]
+[package.metadata.miden.dependencies]
 add-contract = { wit = "../add-contract/target/generated-wit/" }

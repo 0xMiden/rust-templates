@@ -1,5 +1,8 @@
+# The package name is hyphenated so it matches how dependents reference this
+# contract (e.g. `add-contract = { path = "../add-contract" }`); a dependency's
+# declared name must equal the resolved package's name.
 [package]
-name = "{{crate_name}}"
+name = "{{crate_name | replace: "_", "-" }}"
 version = "0.1.0"
 
 [lib]
