@@ -23,7 +23,7 @@ use cargo_miden::{CommandOutput, run};
 /// Must stay in sync with the `cargo-miden` git branch in `Cargo.toml` so the
 /// SDK linked into a generated project matches the compiler statically linked
 /// into `cargo-miden`.
-const COMPILER_BRANCH: &str = "next";
+const COMPILER_BRANCH: &str = "fix-masp-target-dir";
 
 /// Guard that serializes the cwd-mutating tests and restores the original
 /// working directory when dropped.

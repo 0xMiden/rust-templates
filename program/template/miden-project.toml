@@ -4,8 +4,7 @@ version = "0.1.0"
 
 [[bin]]
 name = "{{crate_name}}"
-# NOTE: This is a temporary workaround until v0.23.x of the VM is used
 path = "<virtual>"
 
 [dependencies]
-miden-core = "=0.22.3"
+miden-core = "*"
